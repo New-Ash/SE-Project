@@ -3,6 +3,7 @@ import './Listitem.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import Card from "react-bootstrap/Card";
+import heroku from '../../variable'
 
 const jwt = require('jsonwebtoken')
 
@@ -45,7 +46,7 @@ export class ListItemsCusHistory extends Component {
     
     console.log("listitems "+c_id);
     
-    axios.get('http://localhost:4000/api4/'+c_id)
+    axios.get(`${heroku.baseurl}api4/`+c_id)
     .then((response)=>{
       const data= response.data;
       this.setState({posts:data});

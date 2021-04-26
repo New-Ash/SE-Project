@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import heroku from '../../variable'
 
 
 const Swal=require('sweetalert2');
@@ -51,7 +52,7 @@ export class ListItemsProf extends Component {
   
 getCustDetails(id){
   console.log("get cust details :" + id);
-  axios.get('http://localhost:4000/api3/'+id,{place : location})
+  axios.get(`${heroku.baseurl}api3/`+id,{place : location})
   .then((response)=>{
     const data= response.data;
    
@@ -76,7 +77,7 @@ getCustDetails(id){
     console.log("listitems "+profession);
     console.log("listitems "+location);
     
-    axios.post('http://localhost:4000/api1/getprofdata',{place :location, role:profession })
+    axios.post(`${heroku.baseurl}api1/getprofdata`,{place :location, role:profession })
     .then((response)=>{
       const data= response.data;
       this.setState({posts:data});
@@ -141,7 +142,7 @@ getCustDetails(id){
     };
 
     axios({
-      url:'http://localhost:4000/api1/ongoing',
+      url:`${heroku.baseurl}api1/ongoing`,
       method:'POST',
       data:payload
 
@@ -154,7 +155,7 @@ getCustDetails(id){
         confirmButtonText: 'ok'
       }).then((result) =>{
           if (result.isConfirmed) {
-            axios.post('http://localhost:4000/api/deleteavailable',{postid:id})
+            axios.post(`${heroku.baseurl}api/deleteavailable`,{postid:id})
             .then((response)=>{
       
               console.log("deleted from available")
@@ -224,7 +225,7 @@ getCustDetails(id){
         <Col className="">
               <Row className="px-0" style={{padding:'0px'}}>
                 <Accordion.Toggle as={Button} className="px-0" variant="link" eventKey="1">
-                    Click to View More
+                    Click to View Customer Details
                 </Accordion.Toggle>
               </Row>
     <Accordion.Collapse eventKey="1">

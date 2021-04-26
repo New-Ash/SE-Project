@@ -3,6 +3,7 @@ import './Listitem.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import Card from "react-bootstrap/Card";
+import heroku from '../../variable';
 
 const Swal=require('sweetalert2');
 
@@ -50,7 +51,7 @@ export class OngoingProfListitem extends Component {
     
     console.log("listitems "+profid);
     
-    axios.post('http://localhost:4000/api5/'+profid)
+    axios.post(`${heroku.baseurl}api5/`+profid)
     .then((response)=>{
       const data= response.data;
       this.setState({posts:data});

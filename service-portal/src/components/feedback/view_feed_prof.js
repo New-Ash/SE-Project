@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
+import heroku from '../../variable'
 import {Card} from 'react-bootstrap'
 import {BsStarFill} from 'react-icons/bs'
 import {BsStar} from 'react-icons/bs'
@@ -87,7 +87,7 @@ class View_feed_prof extends Component{
         const prof={p_id:p_id};
         //console.log("id is "+p_id);
         
-        axios.post('http://localhost:4000/app/get_feedback_prof',{prof})
+        axios.post(`${heroku.baseurl}app/get_feedback_prof`,{prof})
         .then(Response=>{
             //console.log(Response);
             // j=Response.data;

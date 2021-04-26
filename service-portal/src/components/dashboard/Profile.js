@@ -9,6 +9,7 @@ import axios from "axios";
 import Sidebar from './Sidebar';
 import NavigationBar  from './NavigationBar';
 import { render } from 'react-dom';
+import heroku from '../../variable'
 const GridWrapper = styled.div`
   display: grid;
   grid-gap: 10px;
@@ -57,7 +58,7 @@ function getUserID(){
       // }
 
      getdetails(){
-       axios.get('http://localhost:4000/profileretrieve/'+cID)
+       axios.get(`${heroku.baseurl}profileretrieve/`+cID)
     .then((response)=>{
       const data= response.data;
        console.log(data);
@@ -94,7 +95,7 @@ function getUserID(){
       email: this.state.email,
       phoneno: this.state.phoneno};
 
-    axios.post("http://localhost:4000/app/updateProfile/",formData
+    axios.post(`${heroku.baseurl}app/updateProfile/`,formData
        ).catch(err=>console.log(err))
 }
 

@@ -3,6 +3,7 @@ import React ,{Component} from 'react'
 import { FaStar } from 'react-icons/fa'
 import Swal from 'sweetalert2';
 import './StarRating.css'
+import heroku from '../../variable'
 
 var rName,cID,pID; //hardcoded here;
 pID = sessionStorage.getItem('giveFeedback');
@@ -81,7 +82,7 @@ class  StarRating extends Component {
                 p_id:pID
             }
             console.log(JSON.stringify(feedback,null,2));
-        axios.post("http://localhost:4000/app/feedback",feedback)
+        axios.post(`${heroku.baseurl}app/feedback`,feedback)
         .then(Response => {
             if (Response.status === 200) {
                 Swal.fire({

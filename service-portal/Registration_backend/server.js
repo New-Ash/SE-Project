@@ -10,9 +10,6 @@ const PORT=process.env.PORT || 4000;
 const customerroute = require('./Routes/profileretrieve') ;
 // const customerupdateroute = require('./Routes/update-profile');
 const professionalroute = require('./Routes/profileretrieve_prof') ;
-let corsOptions = {
-  origin: 'http://localhost:4000/' 
-};
 
 
 

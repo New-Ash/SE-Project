@@ -7,6 +7,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import Sidebar from './Sidebar';
 import NavigationBar  from './NavigationBar';
 import axios from 'axios';
+import heroku from '../../variable'
 const Swal = require('sweetalert2')
 const jwt = require('jsonwebtoken')
 var token = document.cookie.split('=')[1];
@@ -108,7 +109,7 @@ export class Home extends Component {
     };
 
     axios({
-      url:'http://localhost:4000/api/available',
+      url:`${heroku.baseurl}api/available`,
       method:'POST',
       data:payload
 

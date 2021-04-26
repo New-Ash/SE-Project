@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import './postbar.css'
 import axios from 'axios'
 import StarRating from './StarRating'
+import heroku from '../../variable'
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv').config()
 var customer_id,rating,review,pID="professional_id" //hardcoded here;
@@ -32,7 +33,7 @@ function feedback(rating,review){
     customer_id : customer_id,
     profession_id:"profession_id"
   }
-  axios.post('http://localhost:4000/app/feedback',feedBack)
+  axios.post(`${heroku.baseurl}app/feedback`,feedBack)
   .then(Response => {
     console.log(Response);
     
@@ -103,7 +104,7 @@ export class Postbar extends Component {
         customer_id : customer_id,
         profession_id : "professional_id"
       }
-      axios.post('http://localhost:4000/app/givenFeedback',givenFeedback)
+      axios.post(`${heroku.baseurl}app/givenFeedback`,givenFeedback)
       .then(Response => {
         givenRating = Response.data.rating
         givenReview = Response.data.review

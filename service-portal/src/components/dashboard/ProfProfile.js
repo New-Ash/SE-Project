@@ -7,8 +7,9 @@ import "./ProfProfile.css";
 import Sidebarprof from './Sidebarprof';
 import axios from "axios";
 import { NavigationBarprof } from './NavigationBarprof';
-import View_feed_prof from '../feedback/View_feed_prof';
+import View_feed_prof from '../feedback/view_feed_prof';
 import Accordion from "react-bootstrap/Accordion";
+import heroku from '../../variable'
 import { render } from 'react-dom';
 
 const GridWrapper = styled.div`
@@ -57,7 +58,7 @@ function getUserID(){
 
      getdetails(){
       
-       axios.get('http://localhost:4000/profileretrieve_prof/'+pID)
+       axios.get(`${heroku.baseurl}profileretrieve_prof/`+pID)
     .then((response)=>{
       const data= response.data;
        console.log(data);
@@ -107,7 +108,7 @@ function getUserID(){
       occupation: this.state.occupation,
       experience: this.state.experience};
 
-    axios.post("http://localhost:4000/app/updateProfile_prof/",formData
+    axios.post(`${heroku.baseurl}app/updateProfile_prof/`,formData
        ).catch(err=>console.log(err))
 }
 

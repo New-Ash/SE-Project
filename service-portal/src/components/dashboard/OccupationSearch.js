@@ -6,6 +6,7 @@ import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import heroku from '../../variable';
 import "./OS.css";
 import StarRating from "../feedback/StarRating";
 import View_feed_prof_search from "../feedback/View_feed_prof_search";
@@ -20,7 +21,7 @@ function OccupationSearch() {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:4000/professionals/all")
+      .get(`${heroku.baseurl}professionals/all`)
       .then((res) => {
         setprofessionals(res.data);
         setLoading(false);
@@ -90,7 +91,7 @@ const ProfessionalDetail = (props) => {
         <Col className="">
               <Row className="px-0" style={{padding:'0px'}}>
                 <Accordion.Toggle as={Button} className="px-0" variant="link" eventKey="1">
-                    Click to View More
+                    Click to View Feedback
                 </Accordion.Toggle>
               </Row>
     <Accordion.Collapse eventKey="1">

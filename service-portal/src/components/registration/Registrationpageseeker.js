@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import '../stylesheets/Registrationpageseeker.css'
 import { Route } from 'react-router-dom'
 import axios from 'axios'
+import heroku from '../../variable'
 const Swal = require('sweetalert2')
 var isEmpty = false;
 
@@ -121,7 +122,7 @@ class Registrationpageseeker extends Component {
                           window.location.replace('/regpageseeker')
                       }})
             }else{            
-                axios.post('http://localhost:4000/app/signupProfessional',registered)
+                axios.post(`${heroku.baseurl}app/signupProfessional`,registered)
                 .then(Response => {
                     if (Response.status == 200) {
                         Swal.fire({

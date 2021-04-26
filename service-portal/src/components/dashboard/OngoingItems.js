@@ -3,6 +3,7 @@ import './Listitem.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import {Card} from 'react-bootstrap'
+import heroku from '../../variable'
 const Swal=require('sweetalert2');
 
 
@@ -50,7 +51,7 @@ export class Listitems extends Component {
     
     console.log("listitems "+custid);
     
-    axios.post('http://localhost:4000/api1/getongoing',{id:custid})
+    axios.post(`${heroku.baseurl}api1/getongoing`,{id:custid})
     .then((response)=>{
       const data= response.data;
       this.setState({posts:data});
@@ -83,7 +84,7 @@ export class Listitems extends Component {
     };
 
     axios({
-      url:'http://localhost:4000/api/done',
+      url:`${heroku.baseurl}api/done`,
       method:'POST',
       data:payload
 
@@ -96,7 +97,7 @@ export class Listitems extends Component {
         confirmButtonText: 'ok'
       }).then((result) =>{
           if (result.isConfirmed) {
-            axios.post('http://localhost:4000/api1/deleteongoing',{postid:id})
+            axios.post(`${heroku.baseurl}api1/deleteongoing`,{postid:id})
             .then((response)=>{
       
               console.log("deleted from ongoing")
