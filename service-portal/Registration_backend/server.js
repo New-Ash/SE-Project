@@ -10,7 +10,7 @@ const PORT=process.env.PORT || 4000;
 const customerroute = require('./Routes/profileretrieve') ;
 // const customerupdateroute = require('./Routes/update-profile');
 const professionalroute = require('./Routes/profileretrieve_prof') ;
-
+const path =require('path');
 
 
 
@@ -41,4 +41,10 @@ app.use('/api2',routes2);
 app.use('/api3',routes3);
 app.use('/api4',routes4);
 app.use('/api5',routes5);
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static('build'));
+    app.get('*', (req,res) => {
+        res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    })
+  }
 app.listen(PORT,console.log(`Server open at  ${PORT}`));
